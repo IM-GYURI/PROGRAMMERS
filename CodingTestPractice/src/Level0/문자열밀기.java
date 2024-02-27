@@ -1,7 +1,7 @@
 package Level0;
 
 class Solution7 {
-    public int solution(String A, String B) {
+/*    public int solution(String A, String B) {
         if (A.equals(B)) {
             return 0;
         }
@@ -25,6 +25,10 @@ class Solution7 {
         }
 
         return -1;
+    }*/
+
+    public int solution(String A, String B) {
+        return (B + B).indexOf(A);
     }
 }
 public class 문자열밀기 {

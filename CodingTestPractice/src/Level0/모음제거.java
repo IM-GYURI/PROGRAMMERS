@@ -1,12 +1,9 @@
 package Level0;
 
-import java.util.ArrayList;
-
 class Solution6 {
-    public String solution(String my_string) {
+/*    public String solution(String my_string) {
         ArrayList<Character> list = new ArrayList<>();
         char[] aeiou = {'a', 'e', 'i', 'o', 'u'};
-        int idx = 0;
         boolean isOK = false;
 
         for (char c : my_string.toCharArray()) {
@@ -29,6 +26,10 @@ class Solution6 {
         }
 
         return result;
+    }*/
+
+    public String solution(String my_string) {
+        return my_string.replaceAll("[aeiou]", "");
     }
 }
 
