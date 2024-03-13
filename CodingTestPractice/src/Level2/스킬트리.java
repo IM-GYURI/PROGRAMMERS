@@ -1,34 +1,54 @@
 package Level2;
 
 class Solution11 {
+//    public int solution(String skill, String[] skill_trees) {
+//        int answer = 0;
+//
+//        for (int i = 0; i < skill_trees.length; i++) {
+//            boolean isOk = true;
+//            int[] priority = new int[skill.length()];
+//
+//            for (int j = 0; j < skill_trees[i].length(); j++) {
+//                char c = skill_trees[i].charAt(j);
+//                if (skill.contains(String.valueOf(c))) {
+//                    for (int k = 0; k < skill.length(); k++) {
+//                        if (skill.charAt(k) == c) {
+//                            for (int l = 0; l < k; l++) {
+//                                if (priority[l] != 1) {
+//                                    isOk = false;
+//                                }
+//                            }
+//                            priority[k] = 1;
+//                        }
+//                    }
+//                }
+//            }
+//
+//            if (isOk) {
+//                answer++;
+//            }
+//        }
+//
+//        return answer;
+//    }
+
     public int solution(String skill, String[] skill_trees) {
         int answer = 0;
 
         for (int i = 0; i < skill_trees.length; i++) {
-            boolean isOk = true;
-            int[] priority = new int[skill.length()];
-
+            skill_trees[i] = skill_trees[i].replaceAll("[^" + skill + "]", "");
+            boolean flag = true;
             for (int j = 0; j < skill_trees[i].length(); j++) {
-                char c = skill_trees[i].charAt(j);
-                if (skill.contains(String.valueOf(c))) {
-                    for (int k = 0; k < skill.length(); k++) {
-                        if (skill.charAt(k) == c) {
-                            for (int l = 0; l < k; l++) {
-                                if (priority[l] != 1) {
-                                    isOk = false;
-                                }
-                            }
-                            priority[k] = 1;
-                        }
-                    }
+                if (skill.charAt(j) != skill_trees[i].charAt(j)) {
+                    flag = false;
+                    break;
                 }
             }
 
-            if (isOk) {
+            if (flag) {
                 answer++;
             }
         }
-
         return answer;
     }
 }
