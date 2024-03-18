@@ -4,47 +4,18 @@ import java.util.Arrays;
 
 class Solution3 {
     public int[] solution(int numer1, int denom1, int numer2, int denom2) {
-        /*
-        int denom3 = denom1 * denom2;
+       int[] result = new int[2];
 
-        numer1 *= denom2;
-        numer2 *= denom1;
-        int numer3 = numer1 + numer2;
+       if (denom1 == denom2) {
+           result[0] = numer1 + numer2;
+           result[1] = denom1;
+       } else {
+           result[0] = numer1 * denom2 + numer2 * denom1;
+           result[1] = denom1 * denom2;
+       }
 
-        boolean isOK = true;
-        int min = Math.min(numer3, denom3);
-        int common = 0;
-
-        for (int i = 2; i <= min; i++) {
-            if (numer3 % i == 0 && denom3 % i == 0) {
-                isOK = false;
-                common = i;
-            }
-        }
-
-        if (isOK) {
-            int[] result = {numer3, denom3};
-            return result;
-        } else {
-            numer3 /= common;
-            denom3 /= common;
-            int[] result = {numer3, denom3};
-            return result;
-        }
-         */
-
-        int[] result = new int[2];
-
-        if (denom1 == denom2) {
-            result[0] = numer1 + numer2;
-            result[1] = denom1;
-        } else {
-            result[0] = numer1 * denom2 + numer2 * denom1;
-            result[1] = denom1 * denom2;
-        }
-
-        int gcd = 1;
-        int min = Math.min(result[0], result[1]);
+       int gcd = -1;
+       int min = Math.min(result[0], result[1]);
 
         for (int i = 2; i <= min; i++) {
             if (result[0] % i == 0 && result[1] % i == 0) {
@@ -52,13 +23,15 @@ class Solution3 {
             }
         }
 
-        if (gcd != 1) {
-            result[0] /= gcd;
-            result[1] /= gcd;
+
+        if (gcd == -1 ){
             return result;
         } else {
-            return result;
+            result[0] /= gcd;
+            result[1] /= gcd;
         }
+
+        return result;
     }
 }
 
