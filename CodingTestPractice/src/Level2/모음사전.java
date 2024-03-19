@@ -11,15 +11,15 @@ class Solution17 {
         int answer = 0;
         set = new TreeSet<>();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < arr.length; i++) {
             makeWord(arr[i], 1);
         }
 
-        int count = 0;
         for (String s : set) {
-            count++;
+            answer++;
+
             if (s.equals(word)) {
-                return count;
+                return answer;
             }
         }
 
@@ -32,7 +32,7 @@ class Solution17 {
             return;
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < arr.length; i++) {
             makeWord(base + arr[i], depth + 1);
         }
     }
