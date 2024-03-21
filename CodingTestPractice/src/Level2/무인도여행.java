@@ -18,7 +18,7 @@ class Solution21 {
     public int[] solution(String[] maps) {
         List<Integer> list = new ArrayList<>();
         mapToChar = new char[maps.length][maps[0].length()];
-        visited = new boolean[maps.length][maps[0].length()];
+        visited = new boolean[mapToChar.length][mapToChar[0].length];
 
         for (int i = 0; i < maps.length; i++) {
             mapToChar[i] = maps[i].toCharArray();
@@ -47,22 +47,22 @@ class Solution21 {
         visited[x][y] = true;
 
         while (!queue.isEmpty()) {
-            int[] current = queue.poll();
-            int cX = current[0];
-            int cY = current[1];
-            sum += mapToChar[cX][cY] - '0';
+            int[] cur = queue.poll();
+            int curX = cur[0];
+            int curY = cur[1];
+            sum += mapToChar[curX][curY] - '0';
 
             for (int i = 0; i < 4; i++) {
-                int nX = cX + dX[i];
-                int nY = cY + dY[i];
+                int calX = curX + dX[i];
+                int calY = curY + dY[i];
 
-                if (nX < 0 || nX > mapToChar.length - 1 || nY < 0 || nY > mapToChar[0].length - 1) {
+                if (calX < 0 || calX > mapToChar.length - 1 || calY < 0 || calY > mapToChar[0].length - 1) {
                     continue;
                 }
 
-                if (!visited[nX][nY] && mapToChar[nX][nY] != 'X') {
-                    visited[nX][nY] = true;
-                    queue.offer(new int[]{nX, nY});
+                if (!visited[calX][calY] && mapToChar[calX][calY] != 'X') {
+                    visited[calX][calY] = true;
+                    queue.offer(new int[]{calX, calY});
                 }
             }
         }
