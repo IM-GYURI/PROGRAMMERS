@@ -6,8 +6,9 @@ class Solution16 {
     int[] answer = new int[2];
 
     public int[] solution(int[][] arr) {
-        int totalSize = arr.length;
-        quad(0, 0, totalSize, arr);
+        int size = arr.length;
+
+        quad(0, 0, size, arr);
 
         return answer;
     }
@@ -29,10 +30,11 @@ class Solution16 {
             return;
         }
 
-        quad(x, y, size / 2, arr);
-        quad(x + size / 2, y, size / 2, arr);
-        quad(x, y + size / 2, size / 2, arr);
-        quad(x + size / 2, y + size / 2, size / 2, arr);
+        int half = size / 2;
+        quad(x, y, half, arr);
+        quad(x + half, y, half, arr);
+        quad(x, y + half, half, arr);
+        quad(x + half, y + half, half, arr);
     }
 }
 
