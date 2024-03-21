@@ -13,10 +13,10 @@ class Solution20 {
         int[][] visited = new int[maps.length][maps[0].length];
 
         bfs(maps, visited);
-        answer = visited[maps.length - 1][maps[0].length - 1];
 
+        answer = visited[maps.length - 1][maps[0].length - 1];
         if (answer == 0) {
-            answer = -1;
+            return -1;
         }
 
         return answer;
@@ -26,26 +26,27 @@ class Solution20 {
         int x = 0;
         int y = 0;
         visited[x][y] = 1;
+        int[] start = new int[]{x, y};
 
         Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{x, y});
+        queue.offer(start);
 
         while (!queue.isEmpty()) {
-            int[] current = queue.poll();
-            int cX = current[0];
-            int cY = current[1];
+            int[] cur = queue.poll();
+            int curX = cur[0];
+            int curY = cur[1];
 
-            for (int i = 0; i < dX.length; i++) {
-                int nX = cX + dX[i];
-                int nY = cY + dY[i];
+            for (int i = 0; i < 4; i++) {
+                int calX = curX + dX[i];
+                int calY = curY + dY[i];
 
-                if (nX < 0 || nX > maps.length - 1 || nY < 0 || nY > maps[0].length - 1) {
+                if (calX < 0 || calX > maps.length - 1 || calY < 0 || calY > maps[0].length - 1) {
                     continue;
                 }
 
-                if (visited[nX][nY] == 0 && maps[nX][nY] == 1) {
-                    visited[nX][nY] = visited[cX][cY] + 1;
-                    queue.add(new int[]{nX, nY});
+                if (visited[calX][calY] == 0 && maps[calX][calY] == 1) {
+                    visited[calX][calY] = visited[curX][curY] + 1;
+                    queue.offer(new int[]{calX, calY});
                 }
             }
         }
